@@ -33,13 +33,21 @@
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
-    };
+    }
 
     async function init() {
         // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    };
-    
-    init();
-    
+        // const { photographers } = await getPhotographers();
+        //         await displayData(photographers);
+
+        // Affiche les données des photographes
+        fetch("../data/photographers.json")
+            .then(response => response.json())
+            .then(data => displayData(data.photographers))
+            .catch(error => console.log(error));
+
+    }
+
+    init().then(() =>{
+        console.log("init done")
+    } );
