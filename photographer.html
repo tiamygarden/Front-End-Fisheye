@@ -9,12 +9,14 @@
 </head>
 <body>
 <header>
-    <img src="assets/images/logo.png" class="logo" alt="logo" />
+    <a href="index.html" tabindex="1">
+        <img src="assets/images/logo.png" class="logo" alt="logo Fisheye page accueil" />
+    </a>
 </header>
-<main id="main">
-    <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-    </div>
+<main id="main" class="main">
+    <section class="photograph_header_section" role="presentation" aria-label="information du photographe">
+
+    </section>
 </main>
 <div id="contact_modal">
     <div class="modal">
@@ -32,7 +34,9 @@
         </form>
     </div>
 </div>
-<script src="/scripts/pages/photographer.js"></script>
-<script src="/scripts/utils/contactForm.js"></script>
+<script src="scripts/factories/photographerPage.js"></script>
+<script src="scripts/pages/photographer.js"></script>
+<script type="module" src="scripts/fetcherJSON.js"></script>
+<script src="scripts/utils/contactForm.js"></script>
 </body>
 </html>

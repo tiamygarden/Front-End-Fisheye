@@ -2,10 +2,77 @@
     display: none;
 }
 
-.photograph-header {
+.main{
+    display: flex;
+    width: 100%;
+}
+
+.photograph_header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+}
+
+.photograph_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fafafa;
+    width: 100%;
+    border-radius: 5px;
+    margin: auto;
+    padding: 56px 0;
+}
+
+.photograph_header_section {
+    display: flex;
+    width: 100%;
+    margin: 0 100px;
+}
+
+.photograph-info {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 30%;
+}
+
+.photograph-name h1{
+    display: flex;
+    color: #D3573C;
+    margin: 15px 15px 15px 0;
+}
+
+.photograph-txt h2{
+    color: #901C1C;
+    margin: 0;
+}
+
+.photograph-txt p{
+    margin-bottom: 15px;
+}
+
+
+.photographer_portrait img{
+    margin-right: 50px;
+    height: 200px;
+    width: 200px;
+    border-radius: 200px;
+    object-fit: cover;
+}
+
+.photograph_column-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+}
+.photograph_column-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 30%;
 }
 
 .contact_button {
