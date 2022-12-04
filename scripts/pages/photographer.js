@@ -25,11 +25,11 @@ function initPhotographer() {
             const idURL = IDphotographer.get("id");
 
             const { photographers } = data;
-            const { media } = data;
+            // const { media } = data;
 
             //filtre le photographe avec son id
             const Showphotographer = photographers.filter(
-                (photographer) => photographer.id == idURL
+                (photographer) => photographer.id === parseInt(idURL)
             );
 
             // show header photographer
