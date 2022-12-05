@@ -5,8 +5,8 @@ function photographerPageFactory(dataPage) {
 
     function PhotographerHeaderDOM() {
         const article = document.createElement( 'article' );
-        article.classList.add('photograph_header');
-        article.classList.add(id);
+        article.classList.add('photograph_header', id);
+        // article.classList.add(id);
 
         article.innerHTML= `
         <div class="photograph-info">
@@ -30,5 +30,5 @@ function photographerPageFactory(dataPage) {
 
         return (article);
     }
-    return {id, name, portrait, city, country, tagline, alt, PhotographerHeaderDOM };
+    return {PhotographerHeaderDOM };
 }

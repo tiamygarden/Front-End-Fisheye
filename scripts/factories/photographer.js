@@ -6,7 +6,7 @@ function photographerFactory(data) {
     function getPhotographerDOM() {
         const article = document.createElement( 'article' );
         article.innerHTML = `
-            <a href="photographer.html?id=${data.id}" tabindex="0">  
+            <a href="photographer.html?id=${data.id}" tabindex="0">
                 <img src="${picture}" alt="${name}">
                 <h2>${name}</h2>
             </a>
@@ -14,7 +14,7 @@ function photographerFactory(data) {
             <p class="tagline">${tagline}</p>
             <p class="price">${price}€/jour</p>
         `;
-                return (article);
-}
-    return { name, id, picture, country, city, tagline, price, alt, getPhotographerDOM }
+        return (article);
+    }
+    return {getPhotographerDOM, id};
 }

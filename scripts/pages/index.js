@@ -1,21 +1,29 @@
-function displayData(photographers) {
-const photographersSection = document.querySelector(".photographer_section");
+import fetchPhotographers from "../utils/fetchPhotographers.js";
 
-photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
-    const userCardDOM = photographerModel.getPhotographerDOM();
-    photographersSection.appendChild(userCardDOM);
-});
-}
 
-function init() {
-// Récupèrer les datas des photographes
-
-fetch("../data/photographers.json")
-    .then(response => response.json())
-    .then(data => displayData(data.photographers))
-    .catch(error => console.log(error));
+async function displayData() {
+    const photographersSection = document.querySelector(".photographer_section");
+    const photographers= await fetchPhotographers();
+console.log(photographers);
+    photographers.forEach((photographer) => {
+        photographersSection.appendChild(
+            photographerFactory(photographer).getPhotographerDOM()
+                );
+        console.log(photographerFactory(photographer).id);
+    });
 
 }
+await displayData();
 
-init();
+// function init() {
+// // Récupèrer les datas des photographes
+//
+// fetch("../data/photographers.json")
+//     .then(response => response.json())
+//     .then(data => displayData(data.photographers))
+//     .catch(error => console.log(error));
+//
+// }
+//
+// init();
+
