@@ -1,12 +1,12 @@
-function photographerFactory(data) {
-    const { name, id, portrait, country, city, tagline, price, alt } = data;
+export function photographerFactory(data) {
+    const { name, id, portrait, country, city, tagline, price } = data;
 
     const picture = `assets/images/photographers/portrait/${portrait}`;
 
     function getPhotographerDOM() {
         const article = document.createElement( 'article' );
         article.innerHTML = `
-            <a href="photographer.html?id=${data.id}" tabindex="0">
+            <a href="photographer.html?id=${id}" tabindex="0">
                 <img src="${picture}" alt="${name}">
                 <h2>${name}</h2>
             </a>
@@ -16,5 +16,5 @@ function photographerFactory(data) {
         `;
         return (article);
     }
-    return {getPhotographerDOM, id};
+    return {getPhotographerDOM};
 }

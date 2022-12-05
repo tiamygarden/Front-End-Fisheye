@@ -1,29 +1,13 @@
-import fetchPhotographers from "../utils/fetchPhotographers.js";
+import fetchFromSource from '../utils/fetchFromSource.js';
+import { photographerFactory } from '../factories/PhotographerFactory.js';
 
 
-async function displayData() {
-    const photographersSection = document.querySelector(".photographer_section");
-    const photographers= await fetchPhotographers();
-console.log(photographers);
-    photographers.forEach((photographer) => {
-        photographersSection.appendChild(
-            photographerFactory(photographer).getPhotographerDOM()
-                );
-        console.log(photographerFactory(photographer).id);
-    });
+const photographersSection = document.getElementById('photographer_section');
+const { photographers } = await fetchFromSource();
 
-}
-await displayData();
+photographers.forEach((photographer) => {
+    photographersSection.appendChild(photographerFactory(photographer).getPhotographerDOM());
+});
 
-// function init() {
-// // Récupèrer les datas des photographes
-//
-// fetch("../data/photographers.json")
-//     .then(response => response.json())
-//     .then(data => displayData(data.photographers))
-//     .catch(error => console.log(error));
-//
-// }
-//
-// init();
+// await initPhotographer();
 

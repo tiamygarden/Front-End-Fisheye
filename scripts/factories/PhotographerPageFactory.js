@@ -1,14 +1,14 @@
-function photographerPageFactory(dataPage) {
+export function PhotographerPageFactory(dataPage) {
     const { id, name, portrait, city, country, tagline, alt } = dataPage;
 
     const picturePage = `assets/images/photographers/portrait/${portrait}`;
 
     function PhotographerHeaderDOM() {
-        const article = document.createElement( 'article' );
+        const article = document.createElement('article');
         article.classList.add('photograph_header', id);
         // article.classList.add(id);
 
-        article.innerHTML= `
+        article.innerHTML = `
         <div class="photograph-info">
             <div class="photograph-name" tabindex="2">
                 <h1>${name}</h1>
@@ -30,5 +30,6 @@ function photographerPageFactory(dataPage) {
 
         return (article);
     }
-    return {PhotographerHeaderDOM };
+
+    return { PhotographerHeaderDOM };
 }

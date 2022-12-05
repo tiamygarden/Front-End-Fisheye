@@ -1,42 +1,22 @@
-// header pour chaque photographe
-function displayPhotographerData(photograph) {
-    const PhotographerSection = document.querySelector(
-        ".photograph_header_section"
-    );
+import fetchFromSource from '../utils/fetchFromSource.js';
+import { PhotographerPageFactory } from '../factories/PhotographerPageFactory.js';
 
-    photograph.filter((identitee) => {
-        const PhotographerPageModel = photographerPageFactory(identitee);
-        const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
-        PhotographerSection.appendChild(PhotographerDOM);
-    });
-}
+// fetch les datas des photographes
+const { photographers, medias } = await fetchFromSource();
+// console.log(medias.filter(media => media.photographerId === 82));
 
-function initPhotographer() {
-    // fetch les datas des photographes
-    fetch("./data/photographers.json")
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
+//Récupère id du photographe de l'URL
+const IDphotographer = (new URLSearchParams(document.location.search.substring(1))).get('id');
 
-            //Récupère id du photographe de l'URL
-            const IDphotographer = new URLSearchParams(
-                document.location.search.substring(1)
-            );
-            const idURL = IDphotographer.get("id");
+//filtre le photographe avec son id
+const Showphotographer = photographers.find((photographer) => photographer.id === parseInt(IDphotographer));
 
-            const { photographers } = data;
-            // const { media } = data;
+// show header photographer
+const PhotographerSection = document.querySelector('.photograph_header_section');
+const PhotographerPageModel = PhotographerPageFactory(Showphotographer);
+const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
+PhotographerSection.appendChild(PhotographerDOM);
 
-            //filtre le photographe avec son id
-            const Showphotographer = photographers.filter(
-                (photographer) => photographer.id === parseInt(idURL)
-            );
 
-            // show header photographer
-            displayPhotographerData(Showphotographer);
-
-            // display formulaire
-            displayContactForm(Showphotographer);
-        });
-}
-initPhotographer();
+// display formulaire
+// displayContactForm(Showphotographer);
