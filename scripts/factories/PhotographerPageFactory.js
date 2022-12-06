@@ -27,7 +27,6 @@ export function PhotographerPageFactory(dataPage) {
             </div>  
         </div>
         `;
-
         return (article);
     }
 

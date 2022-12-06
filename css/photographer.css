@@ -2,9 +2,15 @@
     display: none;
 }
 
-.main{
+.main {
+    width: 100%;
+    /*margin: 0 auto;*/
+}
+
+.container {
     display: flex;
     width: 100%;
+    margin: 100px;
 }
 
 .photograph_header {
@@ -21,14 +27,13 @@
     background-color: #fafafa;
     width: 100%;
     border-radius: 5px;
-    margin: auto;
+    margin: 0 100px;
     padding: 56px 0;
 }
 
 .photograph_header_section {
     display: flex;
     width: 100%;
-    margin: 0 100px;
 }
 
 .photograph-info {
@@ -38,23 +43,26 @@
     width: 30%;
 }
 
-.photograph-name h1{
+.photograph_media{
+    width: 28%;
+}
+
+.photograph-name h1 {
     display: flex;
     color: #D3573C;
     margin: 15px 15px 15px 0;
 }
 
-.photograph-txt h2{
+.photograph-txt h2 {
     color: #901C1C;
     margin: 0;
 }
 
-.photograph-txt p{
+.photograph-txt p {
     margin-bottom: 15px;
 }
 
-
-.photographer_portrait img{
+.photographer_portrait img {
     margin-right: 50px;
     height: 200px;
     width: 200px;
@@ -68,6 +76,7 @@
     justify-content: center;
     width: 30%;
 }
+
 .photograph_column-right {
     display: flex;
     flex-direction: row;
@@ -86,6 +95,24 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.photograph_medias_section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-right: 100px;
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
+
+.photograph_media_picture img, .photograph_media_movie, .photograph_media_all {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 15px;
 }
 
 .modal {
