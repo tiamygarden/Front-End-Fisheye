@@ -25,7 +25,9 @@ const picture = `assets/images/photographers/${photographerId}/${image}`;
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes" tabindex="2">
-                    <p>${likes}</p>
+                    <p>${likes}
+                    <i id ="heart-icon" class="fa-solid fa-heart"></i>
+                    </p>
                 </div>
             </div>
             <div class="photograph_media">

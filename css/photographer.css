@@ -10,7 +10,6 @@
 .container {
     display: flex;
     width: 100%;
-    margin: 100px;
 }
 
 .photograph_header {
@@ -44,7 +43,7 @@
 }
 
 .photograph_media{
-    width: 28%;
+    width: 32%;
 }
 
 .photograph-name h1 {
@@ -102,17 +101,42 @@
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    margin-right: 100px;
-    margin-top: 50px;
+    margin: 50px 100px;
     padding-bottom: 100px;
 }
 
-.photograph_media_picture img, .photograph_media_movie, .photograph_media_all {
-    width: 400px;
+.photograph_media_picture, .photograph_media_picture img, .photograph_media_movie, .photograph_media_all {
+    width: 100%;
     height: 300px;
     object-fit: cover;
     aspect-ratio: 1/1;
     border-radius: 15px;
+}
+
+.photograph_media_infos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.photograph_media_title, .photograph_media_title h3 {
+    display: flex;
+    justify-content: left;
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.photograph_media_likes, .photograph_media_likes p .photograph_media_likes i{
+    display: flex;
+    justify-content: right;
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.photograph_media_price{
+    display: none;
 }
 
 .modal {
