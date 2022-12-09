@@ -7,7 +7,7 @@
     /*margin: 0 auto;*/
 }
 
-.container {
+.container, .mediasOrderBy {
     display: flex;
     width: 100%;
 }
@@ -25,9 +25,9 @@
     align-items: center;
     background-color: #fafafa;
     width: 100%;
+    height:313px;
     border-radius: 5px;
     margin: 0 100px;
-    padding: 56px 0;
 }
 
 .photograph_header_section {
@@ -96,13 +96,17 @@
     cursor: pointer;
 }
 
+.mediasOrderBy{
+margin: 15px 100px;
+}
+
 .photograph_medias_section {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 100%;
     margin: 50px 100px;
     padding-bottom: 100px;
+    position: absolute;
 }
 
 .photograph_media_picture, .photograph_media_picture img, .photograph_media_movie, .photograph_media_all {

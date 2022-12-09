@@ -1,4 +1,4 @@
-export function PhotographerPageFactory(dataPage) {
+export function photographerPageFactory(dataPage) {
     const { id, name, portrait, city, country, tagline, alt } = dataPage;
 
     const picturePage = `assets/images/photographers/portrait/${portrait}`;

@@ -1,5 +1,5 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
-import { photographerFactory } from '../factories/PhotographerFactory.js';
+import { photographerFactory } from '../factories/photographerFactory.js';
 
 
 const photographersSection = document.getElementById('photographer_section');
