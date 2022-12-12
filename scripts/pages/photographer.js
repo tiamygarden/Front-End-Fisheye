@@ -1,7 +1,6 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
 import { photographerPageFactory } from '../factories/photographerPageFactory.js';
-import { photographerPageMediaFactory } from '../factories/photographerPageMediaFactory.js';
-import { mediaFilterFactory } from '../factories/mediaFilterFactory.js';
+import { mediasFactory } from '../factories/mediasFactory.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -11,33 +10,22 @@ const { photographers, medias } = await fetchFromSource();
 const IDphotographer = (new URLSearchParams(document.location.search.substring(1))).get('id');
 
 //filtre le photographe avec son id
-const ShowPhotographer = photographers.find((photographer) => photographer.id === parseInt(IDphotographer));
-// console.log(ShowPhotographer);
+const photographerInfos = photographers.find((photographer) => photographer.id === parseInt(IDphotographer));
+// console.log(photographerInfos);
 // show header photographer
-const PhotographerSection = document.querySelector('.photograph_header_section');
-const PhotographerPageModel = photographerPageFactory(ShowPhotographer);
-const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
-PhotographerSection.appendChild(PhotographerDOM);
+// const PhotographerSection = document.querySelector('.photograph_header_section');
+// const PhotographerPageModel = photographerPageFactory(photographerInfos);
+// const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
+// PhotographerSection.appendChild(PhotographerDOM);
+document.querySelector('#photographHeaderSection').appendChild(
+    photographerPageFactory(photographerInfos).PhotographerHeaderDOM()
+);
 
-const PhotographerMedias = medias.filter((medias => medias.photographerId === parseInt(IDphotographer)));
-// console.log(PhotographerMedias);
-
-// show photographer's medias
-const photographerMediasSection = document.querySelector('.photograph_medias_section');
-
-PhotographerMedias.forEach((media) => {
-    const photographerPageMediaModel = photographerPageMediaFactory(media);
-    const MediasDOM = photographerPageMediaModel.PhotographerMediasDOM();
-    photographerMediasSection.appendChild(MediasDOM);
-});
-
-function MediaFilterDOM() {
-    const SortButtonSection = document.getElementById('mediasOrderBy');
-    const buttonSort = mediaFilterFactory();
-    SortButtonSection.appendChild(buttonSort);
-}
-
-MediaFilterDOM();
+const MediasFactory = mediasFactory(
+    medias.filter((medias => medias.photographerId === parseInt(IDphotographer)))
+);
+MediasFactory.displayOrderBy();
+MediasFactory.displayList();
 
 // display formulaire
-displayContactForm(ShowPhotographer);
+// displayContactForm(photographerInfos);
