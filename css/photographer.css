@@ -7,9 +7,8 @@
     /*margin: 0 auto;*/
 }
 
-.container, .mediasOrderBy {
+.mediasOrderBy {
     display: flex;
-    width: 100%;
 }
 
 .photograph_header {
@@ -25,7 +24,7 @@
     align-items: center;
     background-color: #fafafa;
     width: 100%;
-    height:313px;
+    height: 313px;
     border-radius: 5px;
     margin: 0 100px;
 }
@@ -42,7 +41,7 @@
     width: 30%;
 }
 
-.photograph_media{
+.photograph_media {
     width: 32%;
 }
 
@@ -96,8 +95,10 @@
     cursor: pointer;
 }
 
-.mediasOrderBy{
-margin: 15px 100px;
+.mediasOrderBy {
+    margin: 15px 100px;
+    align-self: center;
+    align-items: center;
 }
 
 .photograph_medias_section {
@@ -117,7 +118,7 @@ margin: 15px 100px;
     border-radius: 15px;
 }
 
-.photograph_media_infos{
+.photograph_media_infos {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -132,14 +133,75 @@ margin: 15px 100px;
     color: #901C1C;
 }
 
-.photograph_media_likes, .photograph_media_likes p .photograph_media_likes i{
+.photograph_media_likes, .photograph_media_likes p .photograph_media_likes i {
     display: flex;
     justify-content: right;
     font-size: 24px;
     color: #901C1C;
 }
 
-.photograph_media_price{
+.custom-select {
+    position: relative;
+    font-family: inherit;
+    margin-left: 15px ;
+}
+
+.custom-select select {
+    display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+    background-color: #901C1C;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected::after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected .select-arrow-active::after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div, .select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+    position: absolute;
+    background-color: #901C1C;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.photograph_media_price {
     display: none;
 }
 

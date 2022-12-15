@@ -21,9 +21,7 @@ document.querySelector('#photographHeaderSection').appendChild(
     photographerPageFactory(photographerInfos).PhotographerHeaderDOM()
 );
 
-const MediasFactory = mediasFactory(
-    medias.filter((medias => medias.photographerId === parseInt(IDphotographer)))
-);
+mediasFactory(medias.filter((medias => medias.photographerId === parseInt(IDphotographer))));
 MediasFactory.displayOrderBy();
 MediasFactory.displayList();
 
