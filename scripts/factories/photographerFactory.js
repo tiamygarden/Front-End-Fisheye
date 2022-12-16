@@ -6,7 +6,7 @@ export function photographerFactory(data) {
     function getPhotographerDOM() {
         const article = document.createElement( 'article' );
         article.innerHTML = `
-            <a href="photographer.html?id=${id}" tabindex="0">
+            <a href="photographer.html?id=${id}">
                 <img src="${picture}" alt="${name}">
                 <h2>${name}</h2>
             </a>

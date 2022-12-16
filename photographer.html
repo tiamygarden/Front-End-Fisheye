@@ -12,21 +12,22 @@
 </head>
 <body>
 <header>
-    <a href="index.html" tabindex="1">
+    <a href="/index.html">
         <img src="assets/images/logo.png" class="logo" alt="logo Fisheye page accueil" />
     </a>
 </header>
-<main id="main" class="main">
+
+<main id="main">
+
     <section class="photograph_header_section" id="photographHeaderSection" role="presentation" aria-label="information du photographe">
 
     </section>
-        <label class="mediasOrderBy" id="mediasOrderBy">
-            Trier par
+    <div class="labelizeDiv">Trier par
+    <div class="mediasOrderByPlaceholder">
 
-        </label>
-        <section id="photograph_medias_section" class="photograph_medias_section">
-
-        </section>
+    </div>
+    </div>
+    <section id="photograph_medias_section"></section>
 </main>
 <div id="contact_modal">
     <div class="modal">
@@ -44,7 +45,16 @@
         </form>
     </div>
 </div>
+<div id="likes__modal">
+
+</div>
+<div id="lightbox">
+    <div id="lightbox__image">
+
+    </div>
+</div>
 <script type="module" src="scripts/pages/photographer.js"></script>
 <script src="scripts/utils/contactForm.js"></script>
+<script src="scripts/utils/likes.js"></script>
 </body>
 </html>

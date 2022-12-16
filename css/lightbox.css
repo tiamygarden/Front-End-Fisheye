@@ -1,0 +1,18 @@
+#lightbox{
+    display:none
+}
+
+.lightbox--open{
+    display:flex;
+    Width: 1253px;
+    Height :984px;
+    Top: 40px;
+    Left: 101px;
+}
+
+#lightbox__image{
+    object-fit: cover;
+    width: 1050px;
+    height: 900px;
+    border-radius: 5px;
+}
