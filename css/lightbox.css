@@ -9,8 +9,11 @@
     Top: 40px;
     Left: 101px;
 }
+.lightbox--close{
+    display:none;
+}
 
-#lightbox__image{
+#lightboxImage{
     object-fit: cover;
     width: 1050px;
     height: 900px;

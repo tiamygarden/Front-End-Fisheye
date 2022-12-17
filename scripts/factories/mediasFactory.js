@@ -38,7 +38,7 @@ export function mediasFactory(medias) {
     }
 
     function displayList(sortType = null) {
-        const photographerMediasSection = document.querySelector('#photograph_medias_section');
+        const photographerMediasSection = document.querySelector('#photographMediasSection');
         photographerMediasSection.innerHTML = '';
 
         sortMedias(sortType).forEach((media) => {

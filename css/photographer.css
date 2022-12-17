@@ -1,4 +1,4 @@
-#contact_modal {
+#contactModal {
     display: none;
 }
 
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-#photograph_medias_section {
+#photographMediasSection {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;

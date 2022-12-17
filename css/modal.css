@@ -53,7 +53,7 @@ form input {
     border-radius: 5px;
 }
 
-.likesModal {
+.likes__modal {
     position: fixed;
     right: 0;
     bottom: -34px;

@@ -18,8 +18,8 @@ export function photographerPageMediaFactory(dataMedia) {
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes">
-                    <p>${likes}
-                    <i id ="heart-icon" class="fa-solid fa-heart"></i>
+                    <p id="heartCount">${likes}
+                    <i id ="heartIcon" class="fa-solid fa-heart"></i>
                     </p>
                 </div>
             </div>
@@ -36,8 +36,8 @@ export function photographerPageMediaFactory(dataMedia) {
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes">
-                    <p>${likes}
-                    <i id ="heart-icon" class="fa-solid fa-heart"></i>
+                    <p id="heartCount">${likes}
+                    <i id ="heartIcon" class="fa-solid fa-heart"></i>
                     </p>
                 </div>
             </div>
