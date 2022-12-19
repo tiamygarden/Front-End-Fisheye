@@ -53,22 +53,19 @@ form input {
     border-radius: 5px;
 }
 
-.likes__modal {
+#likesModal {
     position: fixed;
     right: 0;
-    bottom: -34px;
+    bottom: 0;
     overflow: hidden;
     margin: 0 36px;
     width: 376px;
-    height: 89px;
     background-color: #DB8876;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
     display: flex;
     justify-content: space-around;
     color: #000000;
     font-size: 24px;
 }
 
-.likes__modal__likes p, .likes__modal__price p {
-    margin: 10px auto;
-}

@@ -1,6 +1,6 @@
 import { photographerPageMediaFactory } from './photographerPageMediaFactory.js';
 
-export function mediasFactory(medias) {
+export function mediasFactory(medias, photographer) {
     window.addEventListener('sortEvent', (event) => {
         window.mediasorderBy = { selected: event.detail };
         displayOrderBy();
@@ -61,5 +61,20 @@ export function mediasFactory(medias) {
         }
     }
 
-    return { displayList, displayOrderBy };
+    function displayRecap() {
+        const totalLikes = medias.reduce((acc, media) => acc + media.likes, 0);
+        const price= photographer.price;
+
+        const cardTotalLikes = document.getElementById('likesModal');
+        cardTotalLikes.innerHTML  = `
+                            <div class="likes__modal__likes">
+                                ${totalLikes}
+                                <i class="fa-solid fa-heart" aria-label="likes"></i>
+                            </div>
+                            <div class="likes__modal__price">
+                                ${price}&euro; / jour
+                            </div>
+                            `;
+    }
+    return { displayList, displayOrderBy, displayRecap };
 }

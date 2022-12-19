@@ -1,8 +1,7 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
 import { photographerPageFactory } from '../factories/photographerPageFactory.js';
 import { mediasFactory } from '../factories/mediasFactory.js';
-import { totalLikesFactory } from '../factories/totalLikesFactory.js';
-import { lightBoxFactory } from '../factories/lightBoxFactory.js';
+// import { lightBoxFactory } from '../factories/lightBoxFactory.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -20,20 +19,23 @@ document.querySelector('#photographHeaderSection').appendChild(photographerPageF
 // const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
 // PhotographerSection.appendChild(PhotographerDOM);
 
-const MediasFactory = mediasFactory(medias.filter((medias => medias.photographerId === parseInt(IDphotographer))));
+const MediasFactory = mediasFactory(medias.filter((medias => medias.photographerId === parseInt(IDphotographer))), photographerInfos);
 MediasFactory.displayOrderBy();
 MediasFactory.displayList();
+MediasFactory.displayRecap();
 
-document.querySelector('#likesModal').appendChild(totalLikesFactory(photographerInfos).totalLikesDOM());
 
 // show lightbox
-const LightBoxFactory = lightBoxFactory(photographerInfos);
-document.querySelector('.photograph_media_picture img').addEventListener('click', (event) => {
-    event.preventDefault();
-    LightBoxFactory.lightBoxDOM();
-});
+// const LightBoxFactory = lightBoxFactory(photographerInfos);
+//
+// document.querySelector('.photograph_media_picture img').addEventListener('click', (event) => {
+//     event.preventDefault();
+//     LightBoxFactory.lightBoxDOM();
+// });
 
-AddClickHeart();
-
-// display formulaire
-displayContactForm(photographerInfos);
+// LightBoxFactory.addClickHeart();
+//
+// AddClickHeart();
+//
+// // display formulaire
+// displayContactForm(photographerInfos);
