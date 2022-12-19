@@ -39,6 +39,10 @@ a {
     text-decoration: none;
 }
 
+i{
+    cursor:pointer;
+}
+
 .logo {
     height: 50px;
     margin: 30px 0;
@@ -46,15 +50,26 @@ a {
     justify-content: flex-start;
 }
 
-#photographer_section {
+#photographer_section{
     display: flex;
+     flex-direction: row;
     justify-content: space-between;
-    align-items: start;
-    align-content: space-between;
+    align-items: center;
+     align-content: space-between;
     width: 100%;
-    flex-wrap: wrap;
+     flex-wrap: wrap;
     gap: 70px;
     margin-top: 10px;
+}
+
+.inlignflex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    max-height: 814px;
+    gap: 80px;
+    margin: 10px;
 }
 
 #photographer_section article {

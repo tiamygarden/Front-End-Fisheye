@@ -38,12 +38,10 @@ mediaSelector.forEach((media) => {
         const lightBoxDom = LightBoxFactory.lightBoxDOM();
         const lightBoxDiv = document.getElementById('lightbox');
         lightBoxDiv.innerHTML= '';
-        lightBoxDiv.style.display = 'block';
+        lightBoxDiv.style.display = 'flex';
         lightBoxDiv.appendChild(lightBoxDom);
     });
 });
-
-// LightBoxFactory.openLightBox();
 
 // LightBoxFactory.addClickHeart();
 //
