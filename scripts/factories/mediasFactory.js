@@ -76,5 +76,8 @@ export function mediasFactory(medias, photographer) {
                             </div>
                             `;
     }
-    return { displayList, displayOrderBy, displayRecap };
+
+
+
+    return { displayList, displayOrderBy, displayRecap, medias };
 }

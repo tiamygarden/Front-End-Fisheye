@@ -1,5 +1,5 @@
 export function photographerPageMediaFactory(dataMedia) {
-    const { id, image, video, title, alt, likes, price, photographerId } = dataMedia;
+    const { id, image, video, title, likes, price, photographerId } = dataMedia;
 
     const picture = `assets/images/photographers/${photographerId}/${image}`;
     const videoUrl = `assets/images/photographers/${photographerId}/${video}`;
@@ -10,7 +10,7 @@ export function photographerPageMediaFactory(dataMedia) {
 
         if (video !== undefined) {
             article.innerHTML = `
-            <video class="photograph_media_movie" aria-label="${alt}" controls>
+            <video class="photograph_media_movie" aria-label="${title}">
                 <source class="photograph_media_all" src="${videoUrl}" type="video/mp4">
             </video>
             <div class="photograph_media_infos">
@@ -28,7 +28,7 @@ export function photographerPageMediaFactory(dataMedia) {
             article.innerHTML = `
             <div class="photograph_media_picture">
                 <div class="photograph_media_all">
-                <img src="${picture}" alt="${alt}"/>
+                <img src="${picture}" alt="${title}"/>
                 </div>
             </div>
             <div class="photograph_media_infos">

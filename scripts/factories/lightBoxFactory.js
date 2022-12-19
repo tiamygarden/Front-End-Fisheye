@@ -50,19 +50,5 @@ export function lightBoxFactory(data) {
         return lightBox;
     }
 
-    //function qui declenche un evenement d'ouvrir la ligthbox au click sur les elements de classe photograph_media_all
-    // function openLightBox() {
-    //     const photographMediaAll = document.querySelectorAll('.photograph_media_all');
-    //     photographMediaAll.forEach((photographMedia) => {
-    //         photographMedia.addEventListener('click', (event) => {
-    //             event.preventDefault();
-    //             const lightBox = lightBoxDOM();
-    //             document.body.appendChild(lightBox);
-    //             closeLightBox();
-    //         });
-    //     });
-    // }
-
-
     return { lightBoxDOM };
 }

@@ -1,7 +1,7 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
 import { photographerPageFactory } from '../factories/photographerPageFactory.js';
 import { mediasFactory } from '../factories/mediasFactory.js';
-// import { lightBoxFactory } from '../factories/lightBoxFactory.js';
+import { lightBoxFactory } from '../factories/lightBoxFactory.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -23,15 +23,27 @@ const MediasFactory = mediasFactory(medias.filter((medias => medias.photographer
 MediasFactory.displayOrderBy();
 MediasFactory.displayList();
 MediasFactory.displayRecap();
-
-
+const sortedMedias = MediasFactory.medias;
+console.log(sortedMedias);
 // show lightbox
-// const LightBoxFactory = lightBoxFactory(photographerInfos);
-//
-// document.querySelector('.photograph_media_picture img').addEventListener('click', (event) => {
-//     event.preventDefault();
-//     LightBoxFactory.lightBoxDOM();
-// });
+
+
+const mediaSelector = document.querySelectorAll('.photograph_media_picture');
+mediaSelector.forEach((media) => {
+    media.addEventListener('click', (event) => {
+        const title = event.target.getAttribute('alt');
+        console.log(MediasFactory);
+        const currentMedia = medias.find((media) => media.title === title);
+        const LightBoxFactory = lightBoxFactory(currentMedia);
+        const lightBoxDom = LightBoxFactory.lightBoxDOM();
+        const lightBoxDiv = document.getElementById('lightbox');
+        lightBoxDiv.innerHTML= '';
+        lightBoxDiv.style.display = 'block';
+        lightBoxDiv.appendChild(lightBoxDom);
+    });
+});
+
+// LightBoxFactory.openLightBox();
 
 // LightBoxFactory.addClickHeart();
 //
