@@ -2,8 +2,6 @@ export default function useLightbox() {
     let items = [];
     let currentIndex = 0;
 
-    //todo ajouter listener event prev next
-
     function open(src) {
         currentIndex = items.findIndex(item => item.src === src);
         document.getElementById('lightbox').classList.add('lightbox--open');
@@ -13,18 +11,29 @@ export default function useLightbox() {
     }
 
     function createItem() {
+        console.log(items[currentIndex])
+        let html = '';
+
+        if (isVideo(items[currentIndex].src)) {
+            html = `<video class="photograph_media_movie lightbox" title="${items[currentIndex].title}" controls>
+                        <source class="photograph_media_all" src="${items[currentIndex].src}" type="video/mp4">
+                    </video>`;
+        } else {
+            html = `<div class="photograph_media_all">
+                        <img src="${items[currentIndex].src}" alt="${items[currentIndex].title}">
+                    </div>`;
+        }
+
         document.getElementById('lightbox').innerHTML = `
             <div class="lightbox__container">
                 <div class="lightbox__container__btn">
-                    <i class="fa-solid fa-xmark"  onclick="close()" aria-label="fermer"></i>
+                    <i class="fa-solid fa-xmark" onclick="window.lightbox.close()" aria-label="fermer"></i>
                 </div>
             </div>  
             <div class="inlignflex">
-                <i id="previous" onclick="previous()" class="fa-solid fa-chevron-left"></i>
-                <div class="photograph_media_all">
-                    <img src="${items[currentIndex].src}" alt="${items[currentIndex].title}">
-                </div>
-                <i id="next" onclick="next()" class="fa-solid fa-chevron-right"></i>
+                <i id="previous" onclick="window.lightbox.previous()" class="fa-solid fa-chevron-left"></i>
+                ${html}
+                <i id="next" onclick="window.lightbox.next()" class="fa-solid fa-chevron-right"></i>
             </div>
             <div class="photograph_media_infos">
                 <div class="photograph_media_title">
@@ -34,19 +43,19 @@ export default function useLightbox() {
         `;
     }
 
-    function close() {
-        // document.getElementsByTagName('body')[0].style.overflow = 'auto';
-        document.getElementById('lightbox').classList.remove('lightbox--open');
+    function isVideo(src) {
+        return src.includes('.mp4');
     }
+
 
     function next() {
         currentIndex = currentIndex + 1 > items.length ? 0 : currentIndex + 1;
         createItem();
-
     }
 
     function previous() {
-
+        currentIndex = currentIndex - 1 < 0 ? items.length - 1 : currentIndex - 1;
+        createItem();
     }
 
     function createDOM() {
@@ -56,17 +65,21 @@ export default function useLightbox() {
     }
 
     function addEventListeners() {
-        // todo ajouter les event listeners
         Array.from(document.getElementsByClassName('lightbox'))
             .forEach(item => {
                 item.addEventListener('click', () => open(item.src));
 
                 items.push({
                     src: item.src,
-                    title: item.alt,
+                    title: isVideo(item.src) ? item.getAttribute('title') : item.alt,
                 });
             });
-        console.log(items);
+    }
+
+
+    function close() {
+        document.getElementsByTagName('body')[0].style.overflow = 'auto';
+        document.getElementById('lightbox').classList.remove('lightbox--open');
     }
 
     function init() {
@@ -75,4 +88,6 @@ export default function useLightbox() {
     }
 
     init();
+
+    return { open, close, next, previous };
 }

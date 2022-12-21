@@ -10,8 +10,8 @@ export function photographerPageMediaFactory(dataMedia) {
 
         if (video !== undefined) {
             article.innerHTML = `
-            <video class="photograph_media_movie" aria-label="${title}">
-                <source class="photograph_media_all lightbox" src="${videoUrl}" type="video/mp4">
+            <video class="photograph_media_movie lightbox" src="${videoUrl}" title="${title}">
+                <source class="photograph_media_all" src="${videoUrl}" type="video/mp4">
             </video>
             <div class="photograph_media_infos">
                 <div class="photograph_media_title">

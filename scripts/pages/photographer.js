@@ -2,7 +2,6 @@ import fetchFromSource from '../utils/fetchFromSource.js';
 import { photographerPageFactory } from '../factories/photographerPageFactory.js';
 import { mediasFactory } from '../factories/mediasFactory.js';
 // import { lightBoxFactory } from '../factories/lightBoxFactory.js';
-import useLightbox from '../lib/useLightbox.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -24,29 +23,8 @@ const MediasFactory = mediasFactory(medias.filter((medias => medias.photographer
 MediasFactory.displayOrderBy();
 MediasFactory.displayList();
 MediasFactory.displayRecap();
-// const sortedMedias = MediasFactory.medias;
-// console.log(sortedMedias);
-// show lightbox
 
-const lightbox = useLightbox();
 
-// const mediaSelector = document.querySelectorAll('.photograph_media_picture');
-// mediaSelector.forEach((media) => {
-//     media.addEventListener('click', (event) => {
-//         const title = event.target.getAttribute('alt');
-//         console.log("MediasFactory", MediasFactory);
-//         const currentMedia = medias.find((media) => media.title === title);
-//         const LightBoxFactory = lightBoxFactory(currentMedia);
-//         const lightBoxDom = LightBoxFactory.lightBoxDOM();
-//         const lightBoxDiv = document.getElementById('lightbox');
-//         lightBoxDiv.innerHTML= '';
-//         lightBoxDiv.style.display = 'flex';
-//         lightBoxDiv.appendChild(lightBoxDom);
-//     });
-// });
-
-// LightBoxFactory.addClickHeart();
-//
 // AddClickHeart();
 //
 // // display formulaire

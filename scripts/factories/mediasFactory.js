@@ -1,4 +1,5 @@
 import { photographerPageMediaFactory } from './photographerPageMediaFactory.js';
+import useLightbox from '../lib/useLightbox.js';
 
 export function mediasFactory(medias, photographer) {
     window.addEventListener('sortEvent', (event) => {
@@ -48,7 +49,8 @@ export function mediasFactory(medias, photographer) {
             const MediasDOM = photographerPageMediaModel.PhotographerMediasDOM();
             photographerMediasSection.appendChild(MediasDOM);
         });
-        // console.log("DOM photographerMediasSection", photographerMediasSection);
+
+        window.lightbox = useLightbox();
     }
 
     function sortMedias(sortType) {
