@@ -11,7 +11,7 @@ export function photographerPageMediaFactory(dataMedia) {
         if (video !== undefined) {
             article.innerHTML = `
             <video class="photograph_media_movie" aria-label="${title}">
-                <source class="photograph_media_all" src="${videoUrl}" type="video/mp4">
+                <source class="photograph_media_all lightbox" src="${videoUrl}" type="video/mp4">
             </video>
             <div class="photograph_media_infos">
                 <div class="photograph_media_title">
@@ -28,7 +28,7 @@ export function photographerPageMediaFactory(dataMedia) {
             article.innerHTML = `
             <div class="photograph_media_picture">
                 <div class="photograph_media_all">
-                <img src="${picture}" alt="${title}"/>
+                    <img src="${picture}" alt="${title}" class="lightbox" />
                 </div>
             </div>
             <div class="photograph_media_infos">

@@ -1,5 +1,5 @@
 export function lightBoxFactory(data) {
-    const { image, video, title, alt, photographerId } = data;
+    const { image, video, title, photographerId } = data;
 
     const picture = `assets/images/photographers/${photographerId}/${image}`;
     const videoUrl = `assets/images/photographers/${photographerId}/${video}`;
@@ -10,24 +10,24 @@ export function lightBoxFactory(data) {
 
         if (video !== undefined) {
             lightBox.innerHTML = `
-                            <div class="lightbox__container">
-                                <div class="lightbox__container__btn">
-                                    <i class="fa-solid fa-xmark"  onclick="closeLigthModal()" aria-label="fermer"></i>
-                                </div>
-                                <div class="inlignflex">
-                                <i id="previous" class="fa-solid fa-chevron-left"></i>
-                                <video class="photograph_media_movie" aria-label="${alt}" controls>
-                                    <source class="photograph_media_all" src="${videoUrl}" type="video/mp4">
-                                </video>       
-                                    <i  id="next" class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <div class="photograph_media_infos">
-                                    <div class="photograph_media_title">
-                                        <h3>${title}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
+                <div class="lightbox__container">
+                    <div class="lightbox__container__btn">
+                        <i class="fa-solid fa-xmark"  onclick="closeLigthModal()" aria-label="fermer"></i>
+                    </div>
+                    <div class="inlignflex">
+                    <i id="previous" onclick="previousMedia()" class="fa-solid fa-chevron-left"></i>
+                    <video class="photograph_media_movie" aria-label="${title}" controls>
+                        <source class="photograph_media_all" src="${videoUrl}" type="video/mp4">
+                    </video>       
+                        <i id="next" onclick="nextMedia()" class="fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class="photograph_media_infos">
+                        <div class="photograph_media_title">
+                            <h3>${title}</h3>
+                        </div>
+                    </div>
+                </div>
+                `;
         } else {
             lightBox.innerHTML = `
                             <div class="lightbox__container">
@@ -35,13 +35,13 @@ export function lightBoxFactory(data) {
                                     <i class="fa-solid fa-xmark" onclick="closeLigthModal()" aria-label="fermer"></i>
                                 </div>
                                 <div class="inlignflex">
-                                <i id="previous" class="fa-solid fa-chevron-left"></i>
+                                    <i id="previous" onclick="previousMedia()" class="fa-solid fa-chevron-left"></i>
                                 <div class="photograph_media_picture">
                                     <div class="photograph_media_all">
-                                        <img src="${picture}" alt="${alt}"/>
+                                        <img src="${picture}" alt="${title}"/>
                                     </div>
                                 </div>
-                                <i id="next" class="fa-solid fa-chevron-right"></i>
+                                    <i id="next" onclick="nextMedia()" class="fa-solid fa-chevron-right"></i>
                                 </div>
                                 <div class="photograph_media_infos">
                                     <div class="photograph_media_title">
@@ -54,6 +54,36 @@ export function lightBoxFactory(data) {
         return lightBox;
     }
 
+    // function previousMedia() {
+    //     const previous = document.getElementById('previous');
+    //     previous.addEventListener('click', () => {
+    //         const currentMedia = document.querySelector('.lightbox--open');
+    //         const currentMediaId = currentMedia.getAttribute('data-id');
+    //         const currentMediaIndex = medias.findIndex((media) => media.id === currentMediaId);
+    //         const previousMediaIndex = currentMediaIndex - 1;
+    //         const previousMedia = medias[previousMediaIndex];
+    //         const previousMediaId = previousMedia.id;
+    //         const previousMediaDOM = document.querySelector(`[data-id="${previousMediaId}"]`);
+    //         previousMediaDOM.click();
+    //     });
+    // }
+    // previousMedia();
+
+    // function nextMedia() {
+    //     const next = document.getElementById('next');
+    //     next.addEventListener('click', () => {
+    //         const currentMedia = document.querySelector('.lightbox--open');
+    //         const currentMediaId = currentMedia.getAttribute('data-id');
+    //         const currentMediaIndex = medias.findIndex((media) => media.id === currentMediaId);
+    //         const nextMediaIndex = currentMediaIndex + 1;
+    //         const nextMedia = medias[nextMediaIndex];
+    //         const nextMediaId = nextMedia.id;
+    //         const nextMediaDOM = document.querySelector(`[data-id="${nextMediaId}"]`);
+    //         nextMediaDOM.click();
+    //     });
+    // }
+    // nextMedia();
+
     function closeLigthModal() {
         const lightBoxDiv = document.getElementById('lightbox');
         lightBoxDiv.addEventListener('click', (event) => {
@@ -62,22 +92,6 @@ export function lightBoxFactory(data) {
             }
         });
     }
-
-    // function openLightBox() {
-    //     const mediaSelector = document.querySelectorAll('.photograph_media_picture');
-    //     mediaSelector.forEach((media) => {
-    //         media.addEventListener('click', (event) => {
-    //             const title = event.target.getAttribute('alt');
-    //             const currentMedia = medias.find((media) => media.title === title);
-    //             const LightBoxFactory = lightBoxFactory(currentMedia);
-    //             const lightBoxDom = LightBoxFactory.lightBoxDOM();
-    //             const lightBoxDiv = document.getElementById('lightbox');
-    //             lightBoxDiv.innerHTML= '';
-    //             lightBoxDiv.style.display = 'flex';
-    //             lightBoxDiv.appendChild(lightBoxDom);
-    //         });
-    //     });
-    // }
 
     closeLigthModal();
 

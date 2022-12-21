@@ -7,10 +7,7 @@ export function mediasFactory(medias, photographer) {
         displayList(event.detail);
     });
 
-    function displayOrderBy() {
-        if (window.mediasorderBy?.selected === undefined)
-            window.mediasorderBy = { selected: 'popularity' };
-
+    function sortByLabelSelectedResult(){
         const options = [
             { label: 'Popularité', value: 'popularity' },
             { label: 'Date', value: 'date' },
@@ -18,8 +15,8 @@ export function mediasFactory(medias, photographer) {
         ];
 
         const mediasOrderByPlaceholder = document.querySelector('.mediasOrderByPlaceholder');
-
         let optionsHtml = '';
+
         options.forEach(option => {
             if (option.value !== window.mediasorderBy.selected)
                 optionsHtml += `<li tabindex="0" onclick="window.dispatchEvent(new CustomEvent('sortEvent', { detail:'${option.value}' }))">
@@ -36,6 +33,11 @@ export function mediasFactory(medias, photographer) {
             </ul>
         </div>`;
     }
+    function displayOrderBy() {
+        if (window.mediasorderBy?.selected === undefined)
+            window.mediasorderBy = { selected: 'popularity' };
+        sortByLabelSelectedResult();
+    }
 
     function displayList(sortType = null) {
         const photographerMediasSection = document.querySelector('#photographMediasSection');
@@ -46,6 +48,7 @@ export function mediasFactory(medias, photographer) {
             const MediasDOM = photographerPageMediaModel.PhotographerMediasDOM();
             photographerMediasSection.appendChild(MediasDOM);
         });
+        // console.log("DOM photographerMediasSection", photographerMediasSection);
     }
 
     function sortMedias(sortType) {
@@ -76,8 +79,6 @@ export function mediasFactory(medias, photographer) {
                             </div>
                             `;
     }
-
-
 
     return { displayList, displayOrderBy, displayRecap, medias };
 }
