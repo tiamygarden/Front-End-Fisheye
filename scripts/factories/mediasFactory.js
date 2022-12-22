@@ -1,4 +1,4 @@
-import { photographerPageMediaFactory } from './photographerPageMediaFactory.js';
+import { photographerPageMediasFactory } from './photographerPageMediasFactory.js';
 import useLightbox from '../lib/useLightbox.js';
 
 export function mediasFactory(medias, photographer) {
@@ -45,7 +45,7 @@ export function mediasFactory(medias, photographer) {
         photographerMediasSection.innerHTML = '';
 
         sortMedias(sortType).forEach((media) => {
-            const photographerPageMediaModel = photographerPageMediaFactory(media);
+            const photographerPageMediaModel = photographerPageMediasFactory(media);
             const MediasDOM = photographerPageMediaModel.PhotographerMediasDOM();
             photographerMediasSection.appendChild(MediasDOM);
         });

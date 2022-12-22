@@ -1,7 +1,7 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
-import { photographerPageFactory } from '../factories/photographerPageFactory.js';
+import { photographerHeaderPageFactory } from '../factories/photographerHeaderPageFactory.js';
 import { mediasFactory } from '../factories/mediasFactory.js';
-// import { lightBoxFactory } from '../factories/lightBoxFactory.js';
+import useLikes from '../utils/useLikes.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -12,10 +12,10 @@ const IDphotographer = (new URLSearchParams(document.location.search.substring(1
 //filtre le photographe avec son id
 const photographerInfos = photographers.find((photographer) => photographer.id === parseInt(IDphotographer));
 // show header photographer
-document.querySelector('#photographHeaderSection').appendChild(photographerPageFactory(photographerInfos).PhotographerHeaderDOM());
+document.querySelector('#photographHeaderSection').appendChild(photographerHeaderPageFactory(photographerInfos).PhotographerHeaderDOM());
 //Refacto des lignes ci-dessous
 // const PhotographerSection = document.querySelector('#photographHeaderSection');
-// const PhotographerPageModel = photographerPageFactory(photographerInfos);
+// const PhotographerPageModel = photographerHeaderPageFactory(photographerInfos);
 // const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
 // PhotographerSection.appendChild(PhotographerDOM);
 
@@ -24,6 +24,7 @@ MediasFactory.displayOrderBy();
 MediasFactory.displayList();
 MediasFactory.displayRecap();
 
+useLikes();
 
 // AddClickHeart();
 //

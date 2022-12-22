@@ -12,7 +12,7 @@ export default function useLightbox() {
 
     function createItem() {
         console.log(items[currentIndex])
-        let html = '';
+        let html;
 
         if (isVideo(items[currentIndex].src)) {
             html = `<video class="photograph_media_movie lightbox" title="${items[currentIndex].title}" controls>
@@ -89,5 +89,5 @@ export default function useLightbox() {
 
     init();
 
-    return { open, close, next, previous };
+    return { close, next, previous };
 }

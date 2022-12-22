@@ -1,4 +1,4 @@
-export function photographerPageMediaFactory(dataMedia) {
+export function photographerPageMediasFactory(dataMedia) {
     const { id, image, video, title, likes, price, photographerId } = dataMedia;
 
     const picture = `assets/images/photographers/${photographerId}/${image}`;
@@ -18,9 +18,8 @@ export function photographerPageMediaFactory(dataMedia) {
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes">
-                    <p id="heartCount">${likes}
-                    <i id ="heartIcon" class="fa-solid fa-heart"></i>
-                    </p>
+                    ${likes}
+                    <i id ="heartIcon" onclick="toggleLike()" class="fa-solid fa-heart"></i>
                 </div>
             </div>
             `;
@@ -36,9 +35,8 @@ export function photographerPageMediaFactory(dataMedia) {
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes">
-                    <p id="heartCount">${likes}
-                    <i id ="heartIcon" class="fa-solid fa-heart"></i>
-                    </p>
+                    ${likes}
+                    <i id ="heartIcon" onclick="toggleLike()" class="fa-solid fa-heart"></i>
                 </div>
             </div>
             <div class="photograph_media">

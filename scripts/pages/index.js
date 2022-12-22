@@ -1,12 +1,12 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
-import { photographerFactory } from '../factories/photographerFactory.js';
+import { photographersFactory } from '../factories/photographersFactory.js';
 
 
 const photographersSection = document.getElementById('photographer_section');
 const { photographers } = await fetchFromSource();
 
 photographers.forEach((photographer) => {
-    photographersSection.appendChild(photographerFactory(photographer).getPhotographerDOM());
+    photographersSection.appendChild(photographersFactory(photographer).getPhotographerDOM());
 });
 
 // await initPhotographer();
