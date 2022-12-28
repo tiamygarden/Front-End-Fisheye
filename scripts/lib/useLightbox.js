@@ -11,7 +11,7 @@ export default function useLightbox() {
     }
 
     function createItem() {
-        console.log(items[currentIndex])
+        // console.log(items[currentIndex])
         let html;
 
         if (isVideo(items[currentIndex].src)) {
@@ -49,7 +49,7 @@ export default function useLightbox() {
 
 
     function next() {
-        currentIndex = currentIndex + 1 > items.length ? 0 : currentIndex + 1;
+        currentIndex = currentIndex + 1 > items.length-1 ? 0 : currentIndex + 1;
         createItem();
     }
 

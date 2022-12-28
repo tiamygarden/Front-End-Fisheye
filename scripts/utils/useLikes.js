@@ -1,59 +1,41 @@
-export default function useLikes() {
-    let items = [];
-    let currentLikes =  0;
+export function useLikes() {
+    const numberOfLike = document.getElementById('likesCount');
+    let heartIconButton = document.getElementById('heartIcon');
+    let currentLikes = parseInt(numberOfLike.innerHTML);
 
     function addLike() {
-        currentLikes = items.findlikes(item => item.numberOflikes === numberOflikes);
-        currentLikes = currentLikes + 1;
-        items.push(1);
-        console.log(items);
-
-        createLikeItem();
+        currentLikes= currentLikes+1;
+        heartIconButton.setAttribute('title', 'J aime déjà');
+        updateLikes();
     }
 
-    function removeLike() {
-        currentLikes = currentLikes - 1;
-        items.pop();
-        console.log(items);
-
-        createLikeItem();
+    //function to remove the addlike and change the title to default
+    function disLike() {
+        currentLikes=currentLikes-1;
+        heartIconButton.setAttribute('title', 'Je n aime plus');
+        updateLikes();
     }
 
+    function updateLikes() {
+        numberOfLike.innerHTML = currentLikes;
+    }
+
+    //function to toggle the like
     function toggleLike() {
-        if (items.length === 0) {
-            addLike();
+        let title = heartIconButton.getAttribute('title');
+        if (title === 'J aime déjà') {
+            disLike();
         } else {
-            removeLike();
+            addLike();
         }
-    }
-
-    function createLikeItem() {
-        let html;
-
-       html=`<div class="photograph_media_likes">
-                    ${items[currentLikes].likes}
-                    <i id="heartIcon" onclick="toggleLike()" class="fa-solid fa-heart"></i>
-                    
-                </div>`;
-
-        document.querySelector('.photograph_media_likes').innerHTML = html;
-
-    }
-
-    function AccessToDOM() {
-        document.querySelector(".photograph_media_likes");
-        // document.body.appendChild(createLikesDOM());
+        numberOfLike.innerHTML = currentLikes;
     }
 
     function addEventListeners() {
-        Array.from(document.querySelectorAll('.photograph_media_likes'))
-            .forEach(currentLikes => {
-                currentLikes.addEventListener('click', () => toggleLike());
-            });
+        heartIconButton.addEventListener('click', () => toggleLike());
     }
 
     function init() {
-        AccessToDOM();
         addEventListeners();
     }
 
