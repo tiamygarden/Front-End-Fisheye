@@ -67,20 +67,40 @@ export function mediasFactory(medias, photographer) {
     }
 
     function displayRecap() {
-        let totalLikes = medias.reduce((acc, media) => acc + media.likes, 0);
+        let totalLikes = medias.reduce((acc, cur) => acc + cur.likes, 0);
+
+        function updateTotalLikes(event) {
+            totalLikes += event.detail;
+        }
+
+        window.addEventListener('.likesCount', onchange, updateTotalLikes);
+
         const price= photographer.price;
 
         const cardTotalLikes = document.getElementById('likesModal');
         cardTotalLikes.innerHTML  = `
-                            <div class="likes__modal__likes">
-                                ${totalLikes}
-                                <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
-                            </div>
-                            <div class="likes__modal__price">
-                                ${price}&euro; / jour
-                            </div>
-                            `;
+        <div class="likes__modal__likes">
+            ${totalLikes}
+            <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
+        </div>
+        <div class="likes__modal__price">
+            ${price}&euro; / jour
+        </div>
+        `;
     }
+
+    //     let totalLikes = medias.reduce((acc, cur) => acc + cur.likes, 0);
+    //     const cardTotalLikes = document.getElementById('likesModal');
+    //     cardTotalLikes.innerHTML  = `
+    //                         <div class="likes__modal__likes">
+    //                             ${totalLikes}
+    //                             <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
+    //                         </div>
+    //                         <div class="likes__modal__price">
+    //                             ${price}&euro; / jour
+    //                         </div>
+    //                         `;
+    // }
 
     return { displayList, displayOrderBy, displayRecap, medias };
 }

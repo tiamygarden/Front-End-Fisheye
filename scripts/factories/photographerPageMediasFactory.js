@@ -9,7 +9,7 @@ export function photographerPageMediasFactory(dataMedia) {
         article.classList.add('photograph_media', id);
 
         if (video !== undefined) {
-            article.innerHTML = `
+            article.innerHTML += `
             <video class="photograph_media_movie lightbox" src="${videoUrl}" title="${title}">
                 <source class="photograph_media_all" src="${videoUrl}" type="video/mp4">
             </video>
@@ -18,13 +18,13 @@ export function photographerPageMediasFactory(dataMedia) {
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes">
-                    <div id="likesCount" class="likesCount">${likes}</div>
-                    <i id="heartIcon" onclick="toggleLike()" class="fa-solid fa-heart heartIcon" title="Clic si tu aimes"></i>
+                    <div class="likesCount">${likes}</div>
+                    <i onclick="toggleLike(this)" class="fa-solid fa-heart heartIcon"></i>
                 </div>
             </div>
             `;
         } else {
-            article.innerHTML = `
+            article.innerHTML += `
             <div class="photograph_media_picture">
                 <div class="photograph_media_all">
                     <img src="${picture}" alt="${title}" class="lightbox" />
@@ -35,8 +35,8 @@ export function photographerPageMediasFactory(dataMedia) {
                     <h3>${title}</h3>
                 </div>
                 <div class="photograph_media_likes">
-                    <div id="likesCount" class="likesCount">${likes}</div>
-                    <i id="heartIcon" onclick="toggleLike()" class="fa-solid fa-heart heartIcon" title="Clic si tu aimes"></i>
+                    <div class="likesCount">${likes}</div>
+                    <i onclick="toggleLike(this)" class="fa-solid fa-heart heartIcon"></i>
                 </div>
             </div>
             <div class="photograph_media">

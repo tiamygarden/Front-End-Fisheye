@@ -1,7 +1,7 @@
 import fetchFromSource from '../utils/fetchFromSource.js';
 import { photographerHeaderPageFactory } from '../factories/photographerHeaderPageFactory.js';
 import { mediasFactory } from '../factories/mediasFactory.js';
-import { useLikes } from '../utils/useLikes.js';
+import { useLikes }  from '../utils/useLikes.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -25,6 +25,7 @@ MediasFactory.displayList();
 MediasFactory.displayRecap();
 
 useLikes();
+
 //
 // // display formulaire
 // displayContactForm(photographerInfos);
