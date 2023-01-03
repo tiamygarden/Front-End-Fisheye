@@ -1,6 +1,6 @@
 function displayModal() {
     const modal = document.getElementById("contactModal");
-	modal.style.display = "block";
+	modal.style.display = "flex";
 }
 
 function closeModal() {
