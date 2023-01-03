@@ -20,10 +20,10 @@ document.querySelector('#photographHeaderSection').appendChild(photographerHeade
 // const PhotographerDOM = PhotographerPageModel.PhotographerHeaderDOM();
 // PhotographerSection.appendChild(PhotographerDOM);
 
-const MediasFactory = mediasFactory(medias.filter((medias => medias.photographerId === parseInt(IDphotographer))), photographerInfos);
-MediasFactory.displayOrderBy();
-MediasFactory.displayList();
-MediasFactory.displayRecap();
+window.mediasFactory = mediasFactory(medias.filter((medias => medias.photographerId === parseInt(IDphotographer))), photographerInfos);
+window.mediasFactory.displayOrderBy();
+window.mediasFactory.displayList();
+window.mediasFactory.displayRecap();
 
 window.useLike = useLikes();
 

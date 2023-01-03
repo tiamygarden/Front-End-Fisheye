@@ -2,13 +2,15 @@ import { photographerPageMediasFactory } from './photographerPageMediasFactory.j
 import useLightbox from '../lib/useLightbox.js';
 
 export function mediasFactory(medias, photographer) {
-    window.addEventListener('sortEvent', (event) => {
-        window.mediasOrderBy = { selected: event.detail };
-        displayOrderBy();
-        displayList(event.detail);
-    });
+    let orderBy = 'popularity'
 
-    function sortByLabelSelectedResult() {
+    function sortBy(order) {
+        orderBy = order;
+        displayOrderBy();
+        displayList(order);
+    }
+
+    function displayOrderBy() {
         const options = [
             { label: 'Popularité', value: 'popularity' },
             { label: 'Date', value: 'date' },
@@ -19,26 +21,20 @@ export function mediasFactory(medias, photographer) {
         let optionsHtml = '';
 
         options.forEach(option => {
-            if (option.value !== window.mediasOrderBy.selected)
-                optionsHtml += `<li tabindex="0" onclick="window.dispatchEvent(new CustomEvent('sortEvent', { detail:'${option.value}' }))">
+            if (option.value !== orderBy)
+                optionsHtml += `<li tabindex="0" onclick="window.mediasFactory.sortBy('${option.value}')">
                                     ${options.find(o => o.value === option.value)?.label}
                                 </li>`;
         });
 
         mediasOrderByPlaceholder.innerHTML = `<div class="mediasOrderBy" tabindex="0">
             <div class="mediasOrderBy__Current">
-                ${options.find(o => o.value === window.mediasOrderBy.selected)?.label}
+                ${options.find(o => o.value === orderBy)?.label}
             </div>
             <ul class="mediasOrderBy__Options">
                 ${optionsHtml}
             </ul>
         </div>`;
-    }
-
-    function displayOrderBy() {
-        if (window.mediasOrderBy?.selected === undefined)
-            window.mediasOrderBy = { selected: 'popularity' };
-        sortByLabelSelectedResult();
     }
 
     function displayList(sortType = null) {
@@ -88,5 +84,5 @@ export function mediasFactory(medias, photographer) {
         return likesModalElement;
     }
 
-        return { displayList, displayOrderBy, displayRecap, medias };
-    }
+    return { displayList, displayOrderBy, displayRecap, medias, sortBy };
+}
