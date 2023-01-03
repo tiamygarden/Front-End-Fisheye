@@ -7,3 +7,4 @@ function closeModal() {
     const modal = document.getElementById("contactModal");
     modal.style.display = "none";
 }
+

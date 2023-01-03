@@ -2,6 +2,7 @@ import fetchFromSource from '../utils/fetchFromSource.js';
 import { photographerHeaderPageFactory } from '../factories/photographerHeaderPageFactory.js';
 import { mediasFactory } from '../factories/mediasFactory.js';
 import { useLikes } from '../utils/useLikes.js';
+// import  displayNameAndNickName  from '../utils/contactForm.js';
 
 // fetch les datas des photographes
 const { photographers, medias } = await fetchFromSource();
@@ -23,7 +24,9 @@ const MediasFactory = mediasFactory(medias.filter((medias => medias.photographer
 MediasFactory.displayOrderBy();
 MediasFactory.displayList();
 MediasFactory.displayRecap();
+
 window.useLike = useLikes();
-//
+
 // // display formulaire
 // displayContactForm(photographerInfos);
+document.querySelector('#photographerNicknameAndName').innerHTML = `<h3>${photographerInfos.name}</h3>`;

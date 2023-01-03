@@ -18,7 +18,7 @@ export function photographerHeaderPageFactory(dataPage) {
             </div>
         </div>  
         <div class="photograph_column-center">
-            <button type="button" class="contact_me contact_button">Contactez-moi</button>
+            <button type="button" class="contact_me contact_button" onclick="displayModal()">Contactez-moi</button>
         </div>
         <div class="photograph_column-right">
             <div class="photographer_portrait">

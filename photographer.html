@@ -21,9 +21,9 @@
 
     </section>
     <div class="labelizeDiv">Trier par
-    <div class="mediasOrderByPlaceholder">
+        <div class="mediasOrderByPlaceholder">
 
-    </div>
+        </div>
     </div>
     <section id="photographMediasSection"></section>
 </main>
@@ -33,10 +33,24 @@
             <h2>Contactez-moi</h2>
             <img src="assets/icons/close.svg" onclick="closeModal()" alt="icone de fermeture" />
         </header>
+        <div id="photographerNicknameAndName">
+            <h3>nom</h3>
+        </div>
         <form>
-            <div>
+            <div class="inputs">
                 <label>Prénom
-                    <input />
+                    <input type="text" name="name" id="last-name" class="contact__input" aria-invalid="false" aria-errormessage="lat-name-error">
+                </label>
+                <label>Nom
+                    <input type="text" name="name" id="first-name" class="contact__input" aria-invalid="false" aria-errormessage="first-name-error">
+                </label>
+                <label>Email
+                    <input type="email" name="email" id="email" class="contact__input" aria-invalid="false" aria-errormessage="email-error">
+                </label>
+                <label>Votre message
+                    <textarea name="message" id="message" cols="30" rows="10" class="contact__text-area invalid-text-area"
+                              aria-errormessage="message-error" aria-invalid="true">
+                    </textarea>
                 </label>
             </div>
             <button class="contact_button">Envoyer</button>

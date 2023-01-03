@@ -6,7 +6,6 @@ export function useLikes() {
         document.getElementById('totalLikes').innerHTML = (parseInt(document.getElementById('totalLikes').innerHTML) + 1).toString();
     }
 
-    //function to remove the addlike and change the title to default
     function substract(element) {
         const e = element.getElementsByClassName('likesCount')[0];
         e.innerHTML = (parseInt(e.innerHTML) - 1).toString();
@@ -14,7 +13,6 @@ export function useLikes() {
         document.getElementById('totalLikes').innerHTML = (parseInt(document.getElementById('totalLikes').innerHTML) - 1).toString();
     }
 
-    //function to toggle the like
     function toggle(element) {
         element.getElementsByClassName('fa-heart')[0].classList.contains('--liked')
             ? substract(element)

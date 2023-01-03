@@ -3,7 +3,7 @@ import useLightbox from '../lib/useLightbox.js';
 
 export function mediasFactory(medias, photographer) {
     window.addEventListener('sortEvent', (event) => {
-        window.mediasorderBy = { selected: event.detail };
+        window.mediasOrderBy = { selected: event.detail };
         displayOrderBy();
         displayList(event.detail);
     });
@@ -19,7 +19,7 @@ export function mediasFactory(medias, photographer) {
         let optionsHtml = '';
 
         options.forEach(option => {
-            if (option.value !== window.mediasorderBy.selected)
+            if (option.value !== window.mediasOrderBy.selected)
                 optionsHtml += `<li tabindex="0" onclick="window.dispatchEvent(new CustomEvent('sortEvent', { detail:'${option.value}' }))">
                                     ${options.find(o => o.value === option.value)?.label}
                                 </li>`;
@@ -27,7 +27,7 @@ export function mediasFactory(medias, photographer) {
 
         mediasOrderByPlaceholder.innerHTML = `<div class="mediasOrderBy" tabindex="0">
             <div class="mediasOrderBy__Current">
-                ${options.find(o => o.value === window.mediasorderBy.selected)?.label}
+                ${options.find(o => o.value === window.mediasOrderBy.selected)?.label}
             </div>
             <ul class="mediasOrderBy__Options">
                 ${optionsHtml}
@@ -36,8 +36,8 @@ export function mediasFactory(medias, photographer) {
     }
 
     function displayOrderBy() {
-        if (window.mediasorderBy?.selected === undefined)
-            window.mediasorderBy = { selected: 'popularity' };
+        if (window.mediasOrderBy?.selected === undefined)
+            window.mediasOrderBy = { selected: 'popularity' };
         sortByLabelSelectedResult();
     }
 
@@ -68,14 +68,12 @@ export function mediasFactory(medias, photographer) {
     }
 
     function displayRecap() {
-        // Déclarez et initialisez les variables currentLikes et totalLikes
-        let currentLikes = 0;
+        // Déclare et initialise la variable totalLikes
         let totalLikes = medias.reduce((acc, cur) => acc + cur.likes, 0);
-
-        // Récupérez l'élément de prix du photographe
+        // Récupére l'élément de prix du photographe
         const price = photographer.price;
 
-        // Récupérez l'élément de modal de likes
+        // Récupére l'élément de modal de likes
         const likesModalElement = document.querySelector('#likesModal');
         likesModalElement.innerHTML = `
             <div class="likes__modal__likes">
@@ -90,20 +88,5 @@ export function mediasFactory(medias, photographer) {
         return likesModalElement;
     }
 
-            function addEventListeners(callback) {
-            // Récupérez tous les éléments de bouton de cœur
-            const heartIconButtons = document.querySelectorAll('main .heartIcon');
-            heartIconButtons.forEach((heartIconButton) => {
-                heartIconButton.addEventListener('click', () => {
-                    // Trouvez l'élément de compteur associé au bouton de cœur cliqué
-                    const counterElement = heartIconButton.parentElement.querySelector('.likesCount');
-                    // Faites basculer le like
-                    callback(heartIconButton, counterElement);
-                    // Déclenchez un événement personnalisé pour signaler que le nombre total de likes a été modifié
-                    window.dispatchEvent(new CustomEvent('totalLikesChanged', { detail: totalLikes }));
-                });
-            });
-        }
-
-        return { displayList, displayOrderBy, displayRecap, addEventListeners, medias };
+        return { displayList, displayOrderBy, displayRecap, medias };
     }
