@@ -17,9 +17,9 @@ export function photographerPageMediasFactory(dataMedia) {
                 <div class="photograph_media_title">
                     <h3>${title}</h3>
                 </div>
-                <div class="photograph_media_likes">
+                <div class="photograph_media_likes" onclick="window.useLike.toggle(this)">
                     <div class="likesCount">${likes}</div>
-                    <i onclick="toggleLike(this)" class="fa-solid fa-heart heartIcon"></i>
+                    <i class="fa-solid fa-heart heartIcon"></i>
                 </div>
             </div>
             `;
@@ -34,9 +34,9 @@ export function photographerPageMediasFactory(dataMedia) {
                 <div class="photograph_media_title">
                     <h3>${title}</h3>
                 </div>
-                <div class="photograph_media_likes">
+                <div class="photograph_media_likes" onclick="window.useLike.toggle(this)">
                     <div class="likesCount">${likes}</div>
-                    <i onclick="toggleLike(this)" class="fa-solid fa-heart heartIcon"></i>
+                    <i class="fa-solid fa-heart heartIcon"></i>
                 </div>
             </div>
             <div class="photograph_media">

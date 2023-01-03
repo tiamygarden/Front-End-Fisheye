@@ -8,7 +8,7 @@ export function mediasFactory(medias, photographer) {
         displayList(event.detail);
     });
 
-    function sortByLabelSelectedResult(){
+    function sortByLabelSelectedResult() {
         const options = [
             { label: 'Popularité', value: 'popularity' },
             { label: 'Date', value: 'date' },
@@ -34,6 +34,7 @@ export function mediasFactory(medias, photographer) {
             </ul>
         </div>`;
     }
+
     function displayOrderBy() {
         if (window.mediasorderBy?.selected === undefined)
             window.mediasorderBy = { selected: 'popularity' };
@@ -67,40 +68,42 @@ export function mediasFactory(medias, photographer) {
     }
 
     function displayRecap() {
+        // Déclarez et initialisez les variables currentLikes et totalLikes
+        let currentLikes = 0;
         let totalLikes = medias.reduce((acc, cur) => acc + cur.likes, 0);
 
-        function updateTotalLikes(event) {
-            totalLikes += event.detail;
-        }
+        // Récupérez l'élément de prix du photographe
+        const price = photographer.price;
 
-        window.addEventListener('.likesCount', onchange, updateTotalLikes);
-
-        const price= photographer.price;
-
-        const cardTotalLikes = document.getElementById('likesModal');
-        cardTotalLikes.innerHTML  = `
-        <div class="likes__modal__likes">
-            ${totalLikes}
-            <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
-        </div>
-        <div class="likes__modal__price">
-            ${price}&euro; / jour
-        </div>
+        // Récupérez l'élément de modal de likes
+        const likesModalElement = document.querySelector('#likesModal');
+        likesModalElement.innerHTML = `
+            <div class="likes__modal__likes">
+                <span id="totalLikes">${totalLikes}</span>
+                <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
+            </div>
+            <div class="likes__modal__price">
+                ${price}&euro; / jour
+            </div>
         `;
+
+        return likesModalElement;
     }
 
-    //     let totalLikes = medias.reduce((acc, cur) => acc + cur.likes, 0);
-    //     const cardTotalLikes = document.getElementById('likesModal');
-    //     cardTotalLikes.innerHTML  = `
-    //                         <div class="likes__modal__likes">
-    //                             ${totalLikes}
-    //                             <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
-    //                         </div>
-    //                         <div class="likes__modal__price">
-    //                             ${price}&euro; / jour
-    //                         </div>
-    //                         `;
-    // }
+            function addEventListeners(callback) {
+            // Récupérez tous les éléments de bouton de cœur
+            const heartIconButtons = document.querySelectorAll('main .heartIcon');
+            heartIconButtons.forEach((heartIconButton) => {
+                heartIconButton.addEventListener('click', () => {
+                    // Trouvez l'élément de compteur associé au bouton de cœur cliqué
+                    const counterElement = heartIconButton.parentElement.querySelector('.likesCount');
+                    // Faites basculer le like
+                    callback(heartIconButton, counterElement);
+                    // Déclenchez un événement personnalisé pour signaler que le nombre total de likes a été modifié
+                    window.dispatchEvent(new CustomEvent('totalLikesChanged', { detail: totalLikes }));
+                });
+            });
+        }
 
-    return { displayList, displayOrderBy, displayRecap, medias };
-}
+        return { displayList, displayOrderBy, displayRecap, addEventListeners, medias };
+    }

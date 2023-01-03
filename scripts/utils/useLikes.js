@@ -1,57 +1,25 @@
 export function useLikes() {
-    const heartIconButtons = document.querySelectorAll('.heartIcon');
-    let currentLikes = 0;
-
-    function addLike(heartIconButton, counterElement) {
-        currentLikes = parseInt(counterElement.textContent);
-        currentLikes = currentLikes + 1;
-        counterElement.innerHTML = currentLikes;
-        heartIconButton.classList.add('heartIcon--liked');
-        updateLikes();
+    function add(element) {
+        const e = element.getElementsByClassName('likesCount')[0];
+        e.innerHTML = (parseInt(e.innerHTML) + 1).toString();
+        element.getElementsByClassName('fa-heart')[0].classList.add('--liked');
+        document.getElementById('totalLikes').innerHTML = (parseInt(document.getElementById('totalLikes').innerHTML) + 1).toString();
     }
 
     //function to remove the addlike and change the title to default
-    function disLike(heartIconButton, counterElement) {
-        currentLikes = parseInt(counterElement.textContent);
-        currentLikes = currentLikes - 1;
-        counterElement.innerHTML = currentLikes;
-        heartIconButton.classList.remove('heartIcon--liked');
-        updateLikes();
-    }
-
-    function updateLikes(counterElement) {
-        currentLikes = parseInt(counterElement.textContent);
-        window.dispatchEvent(new CustomEvent('counterChanged', { detail: currentLikes }));
-        // totalLikesForRecap += currentLikes;
+    function substract(element) {
+        const e = element.getElementsByClassName('likesCount')[0];
+        e.innerHTML = (parseInt(e.innerHTML) - 1).toString();
+        element.getElementsByClassName('fa-heart')[0].classList.remove('--liked');
+        document.getElementById('totalLikes').innerHTML = (parseInt(document.getElementById('totalLikes').innerHTML) - 1).toString();
     }
 
     //function to toggle the like
-    function toggleLike(heartIconButton, counterElement) {
-        if (heartIconButton.classList.contains('heartIcon--liked')) {
-            disLike(heartIconButton, counterElement);
-        } else {
-            addLike(heartIconButton, counterElement);
-        }
-        currentLikes = parseInt(counterElement.textContent);
+    function toggle(element) {
+        element.getElementsByClassName('fa-heart')[0].classList.contains('--liked')
+            ? substract(element)
+            : add(element);
     }
 
-    function addEventListeners() {
-        heartIconButtons.forEach((heartIconButton) => {
-            heartIconButton.addEventListener('click', () => {
-                // Find the counter element that is associated with the clicked heart icon
-                const counterElement = heartIconButton.parentElement.querySelector('.likesCount');
-                toggleLike(heartIconButton, counterElement);
-            });
-        });
-    }
-
-    function init() {
-        addEventListeners();
-        toggleLike();
-        updateLikes();
-    }
-
-    init();
-
-    // return { toggleLike, updateLikes};
+    return { toggle };
 }
