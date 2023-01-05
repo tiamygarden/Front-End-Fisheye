@@ -8,19 +8,19 @@ export function photographerHeaderPageFactory(dataPage) {
         article.classList.add('photograph_header');
 
         article.innerHTML = `
-        <div class="photograph-info">
-            <div class="photograph-name">
+        <div class="photograph-info" aria-label="informations" tabindex="0">
+            <div class="photograph-name" aria-label="nom">
                 <h1>${name}</h1>
             </div>
-            <div class="photograph-txt">
+            <div class="photograph-txt" aria-label="origines et tagline">
                 <h2>${city}, ${country}</h2>
                 <p>${tagline}</p>
             </div>
         </div>  
         <div class="photograph_column-center">
-            <button type="button" class="contact_me contact_button" onclick="displayModal()">Contactez-moi</button>
+            <button type="button" class="contact_me contact_button" onclick="displayModal()" aria-label="contactez-moi">Contactez-moi</button>
         </div>
-        <div class="photograph_column-right">
+        <div class="photograph_column-right" tabindex="0">
             <div class="photographer_portrait">
                 <img src="${picturePage}" alt="${alt}"/>
             </div>  

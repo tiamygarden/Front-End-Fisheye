@@ -8,6 +8,3 @@ const { photographers } = await fetchFromSource();
 photographers.forEach((photographer) => {
     photographersSection.appendChild(photographersFactory(photographer).getPhotographerDOM());
 });
-
-// await initPhotographer();
-

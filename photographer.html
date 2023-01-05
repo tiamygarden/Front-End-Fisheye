@@ -17,42 +17,42 @@
             <img src="assets/images/logo.png" class="logo" alt="logo Fisheye page accueil" />
         </a>
     </header>
-    <section class="photograph_header_section" id="photographHeaderSection" role="presentation" aria-label="information du photographe">
+    <div class="photograph_header_section" id="photographHeaderSection" role="presentation" aria-label="information du photographe">
 
-    </section>
-    <div class="labelizeDiv">Trier par
+    </div>
+    <div class="labelizeDiv" aria-label="bouton de tri">Trier par
         <div class="mediasOrderByPlaceholder">
 
         </div>
     </div>
-    <section id="photographMediasSection"></section>
+    <div id="photographMediasSection"></div>
 </main>
-<div id="contactModal">
+<div id="contactModal" aria-label="formulaire de contact">
     <div class="modal">
         <header>
             <h2>Contactez-moi</h2>
-            <img src="assets/icons/close.svg" onclick="closeModal()" alt="icone de fermeture" />
+            <img src="assets/icons/close.svg" onclick="closeModal()" alt="icone de fermeture" tabindex="0"/>
         </header>
-        <div id="photographerNicknameAndName">
+        <div id="photographerNicknameAndName" aria-label="nom du photographe">
             <h3>nom</h3>
         </div>
         <form>
             <div class="inputs">
-                <label>Prénom
+                <label tabindex="0" aria-label="Votre prénom">Prénom
                     <input type="text" name="name" id="last-name" class="contact__input" aria-invalid="false">
                 </label>
-                <label>Nom
+                <label tabindex="0" aria-label="Votre nom">Nom
                     <input type="text" name="name" id="first-name" class="contact__input" aria-invalid="false">
                 </label>
-                <label>Email
+                <label tabindex="0" aria-label="Votre mail">Email
                     <input type="email" name="email" id="email" class="contact__input" aria-invalid="false">
                 </label>
-                <label>Votre message
+                <label tabindex="0" aria-label="Votre message">Votre message
                     <textarea name="message" id="message" cols="30" rows="10" class="contact__text-area">
                     </textarea>
                 </label>
             </div>
-            <button class="contact_button">Envoyer</button>
+            <button class="contact_button" aria-label="envoyer" tabindex="0">Envoyer</button>
         </form>
     </div>
 </div>

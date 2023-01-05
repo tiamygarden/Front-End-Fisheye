@@ -27,16 +27,16 @@ export default function useLightbox() {
         document.getElementById('lightbox').innerHTML = `
             <div class="lightbox__container">
                 <div class="lightbox__container__btn">
-                    <i class="fa-solid fa-xmark" onclick="window.lightbox.close()" aria-label="fermer"></i>
+                    <i class="fa-solid fa-xmark" onclick="window.lightbox.close()" aria-label="fermer" tabindex="0"></i>
                 </div>
             </div>  
             <div class="inlignflex">
-                <i id="previous" onclick="window.lightbox.previous()" class="fa-solid fa-chevron-left"></i>
+                <i id="previous" onclick="window.lightbox.previous()" class="fa-solid fa-chevron-left" aria-label="précedent" tabindex="0"></i>
                 ${html}
-                <i id="next" onclick="window.lightbox.next()" class="fa-solid fa-chevron-right"></i>
+                <i id="next" onclick="window.lightbox.next()" class="fa-solid fa-chevron-right" aria-label="suivant" tabindex="0"></i>
             </div>
-            <div class="photograph_media_infos">
-                <div class="photograph_media_title">
+            <div class="photograph_media_infos" aria-label="informations du media">
+                <div class="photograph_media_title" aria-label="titre">
                     <h3>${items[currentIndex].title}</h3>
                 </div>
             </div>
@@ -52,11 +52,21 @@ export default function useLightbox() {
         currentIndex = currentIndex + 1 > items.length-1 ? 0 : currentIndex + 1;
         createItem();
     }
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowRight') {
+            next();
+        }
+    });
 
     function previous() {
         currentIndex = currentIndex - 1 < 0 ? items.length - 1 : currentIndex - 1;
         createItem();
     }
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'ArrowLeft') {
+            previous();
+        }
+    });
 
     function createDOM() {
         const lightbox = document.createElement('div');
@@ -76,11 +86,22 @@ export default function useLightbox() {
             });
     }
 
-
     function close() {
         document.getElementsByTagName('body')[0].style.overflow = 'auto';
         document.getElementById('lightbox').classList.remove('lightbox--open');
     }
+
+    window.addEventListener("click", function(event) {
+        if (event.target === document.getElementById('lightbox')) {
+            close();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            close();
+        }
+    });
 
     function init() {
         createDOM();

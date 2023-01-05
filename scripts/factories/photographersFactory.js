@@ -10,9 +10,9 @@ export function photographersFactory(data) {
                 <img src="${picture}" alt="${name}">
                 <h2>${name}</h2>
             </a>
-            <p class="location">${city}, ${country}</p>
-            <p class="tagline">${tagline}</p>
-            <p class="price">${price}€/jour</p>
+            <p class="location" aria-label="localisation">${city}, ${country}</p>
+            <p class="tagline" aria-label="tagline">${tagline}</p>
+            <p class="price" aria-label="prix €/jour">${price}€/jour</p>
         `;
         return (article);
     }
