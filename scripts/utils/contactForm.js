@@ -30,7 +30,7 @@ function disableTabindexForm() {
     document.querySelector("footer i").setAttribute("tabIndex", "-1");
 
     // const sorts = document.querySelectorAll(".sort");
-    const imageSelected = document.querySelectorAll(".photograph_media_picture"); //select tabindex medias catalog
+    const imageSelected = document.querySelectorAll(".photograph_media_all "); //select tabindex medias catalog
     const imageTxt = document.querySelectorAll(".photograph_media_title"); //select tabindex medias catalog title
     const imageLike = document.querySelectorAll(".photograph_media_likes"); //select tabindex medias catalog like number
     const imageLikeHeart = document.querySelectorAll(".heartIcon"); //select tabindex medias catalog like heart icon
@@ -43,12 +43,11 @@ function disableTabindexForm() {
     }
 
     //disable tabindex video catalog
-    const videoCatalog = document.querySelectorAll(".photograph_media_movie");
+    const videoCatalog = document.querySelectorAll("video .photograph_media_video");
     for (let i = 0; i < videoCatalog.length; i++) {
         videoCatalog[i].setAttribute("tabIndex", "-1");
     }
 }
-//TODO verifiez que le focus est bien sur le modal trois balises reste non impacté par tabindex -1
 
 function closeModal() {
     const modal = document.getElementById("contactModal");
@@ -56,8 +55,8 @@ function closeModal() {
     main.setAttribute("aria-hidden", "false");
     focusModal.focus();
     focusModal.setAttribute("aria-modal", "false");
-    modal.setAttribute('aria-hidden', 'true')
-    document.querySelector("body").classList.remove('no-scroll')
+    modal.setAttribute("aria-hidden", "true")
+    document.querySelector("body").classList.remove("no-scroll")
     enableTabindexForm();
 }
 
@@ -76,7 +75,7 @@ function enableTabindexForm() {
     document.querySelector(".likes__modal__price").setAttribute("tabIndex", "0");
 
     // const sorts = document.querySelectorAll(".sort");
-    const imageSelected = document.querySelectorAll(".photograph_media_picture"); //select tabindex medias catalog
+    const imageSelected = document.querySelectorAll(".photograph_media_all "); //select tabindex medias catalog
     const imageTxt = document.querySelectorAll(".photograph_media_title"); //select tabindex medias catalog title
     const imageLike = document.querySelectorAll(".photograph_media_likes"); //select tabindex medias catalog like number
     const imageLikeHeart = document.querySelectorAll(".heartIcon"); //select tabindex medias catalog like heart icon
@@ -93,7 +92,6 @@ function enableTabindexForm() {
     for (let i = 0; i < videoCatalog.length; i++) {
         videoCatalog[i].setAttribute("tabIndex", "0");
     }
-
 }
 
 document.addEventListener("keydown", function(event) {
