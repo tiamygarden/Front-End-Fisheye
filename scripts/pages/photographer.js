@@ -26,6 +26,4 @@ window.mediasFactory.displayRecap();
 
 window.useLike = useLikes();
 
-// // display formulaire
-// displayContactForm(photographerInfos);
 document.querySelector('#photographerNicknameAndName').innerHTML = `<h3>${photographerInfos.name}</h3>`;

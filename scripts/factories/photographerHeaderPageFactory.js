@@ -1,5 +1,5 @@
 export function photographerHeaderPageFactory(dataPage) {
-    const { name, portrait, city, country, tagline, alt } = dataPage;
+    const { name, portrait, city, country, tagline } = dataPage;
 
     const picturePage = `assets/images/photographers/portrait/${portrait}`;
 
@@ -22,7 +22,7 @@ export function photographerHeaderPageFactory(dataPage) {
         </div>
         <div class="photograph_column-right" tabindex="0">
             <div class="photographer_portrait">
-                <img src="${picturePage}" alt="${alt}"/>
+                <img src="${picturePage}" alt="${name}"/>
             </div>  
         </div>
         `;

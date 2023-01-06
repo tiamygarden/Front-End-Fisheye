@@ -22,16 +22,16 @@ export function mediasFactory(medias, photographer) {
 
         options.forEach(option => {
             if (option.value !== orderBy)
-                optionsHtml += `<li tabindex="0" onclick="window.mediasFactory.sortBy('${option.value}')" aria-label="${options}">
+                optionsHtml += `<li class="sort" onclick="window.mediasFactory.sortBy('${option.value}')" aria-label="${options}">
                                     ${options.find(o => o.value === option.value)?.label}
                                 </li>`;
         });
 
         mediasOrderByPlaceholder.innerHTML = `<div class="mediasOrderBy" tabindex="0">
-            <div class="mediasOrderBy__Current" tabindex="0">
+            <div class="mediasOrderBy__Current">
                 ${options.find(o => o.value === orderBy)?.label}
             </div>
-            <ul class="mediasOrderBy__Options" tabindex="0">
+            <ul class="mediasOrderBy__Options">
                 ${optionsHtml}
             </ul>
         </div>`;
@@ -72,11 +72,11 @@ export function mediasFactory(medias, photographer) {
         // Récupére l'élément de modal de likes
         const likesModalElement = document.querySelector('#likesModal');
         likesModalElement.innerHTML = `
-            <div class="likes__modal__likes" tabindex="0">
-                <span id="totalLikes">${totalLikes}</span>
-                <i class="fa-solid fa-heart heartIcon" aria-label="likes"></i>
+            <div class="likes__modal__likes" tabindex="2">
+                <span id="totalLikes" tabindex="0">${totalLikes}</span>
+                <i class="fa-solid fa-heart heartIcon" aria-label="likes" tabindex="0"></i>
             </div>
-            <div class="likes__modal__price" aria-label="prix par jour">
+            <div class="likes__modal__price" aria-label="prix par jour" tabindex="0">
                 ${price}&euro; / jour
             </div>
         `;
