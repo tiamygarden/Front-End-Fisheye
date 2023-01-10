@@ -16,11 +16,11 @@ export function photographerHeaderPageFactory(dataPage) {
                 <h2>${city}, ${country}</h2>
                 <p>${tagline}</p>
             </div>
-        </div>  
+        </div>
         <div class="photograph_column-center">
             <button type="button" class="contact_me contact_button" onclick="displayModal()" aria-label="contactez-moi">Contactez-moi</button>
         </div>
-        <div class="photograph_column-right" tabindex="0">
+        <div class="photograph_column-right" tabindex="0">  
             <div class="photographer_portrait">
                 <img src="${picturePage}" alt="${name}"/>
             </div>  

@@ -1,13 +1,27 @@
 export default function useLightbox() {
     let items = [];
     let currentIndex = 0;
+    let eventController = new AbortController();
 
     function open(src) {
+        eventController = new AbortController();
         currentIndex = items.findIndex(item => item.src === src);
         document.getElementById('lightbox').classList.add('lightbox--open');
         document.getElementsByTagName('body')[0].style.overflow = 'hidden';
 
         createItem();
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'ArrowRight') next();
+            if (e.code === 'ArrowLeft') previous();
+            if (e.code === 'Escape') close();
+        }, { signal: eventController.signal });
+    }
+
+    function close() {
+        document.getElementsByTagName('body')[0].style.overflow = 'auto';
+        document.getElementById('lightbox').classList.remove('lightbox--open');
+        eventController.abort();
     }
 
     function createItem() {
@@ -47,26 +61,15 @@ export default function useLightbox() {
         return src.includes('.mp4');
     }
 
-
     function next() {
-        currentIndex = currentIndex + 1 > items.length-1 ? 0 : currentIndex + 1;
+        currentIndex = currentIndex + 1 > items.length - 1 ? 0 : currentIndex + 1;
         createItem();
     }
-    window.addEventListener('keydown', (e) => {
-        if (e.code === 'ArrowRight') {
-            next();
-        }
-    });
 
     function previous() {
         currentIndex = currentIndex - 1 < 0 ? items.length - 1 : currentIndex - 1;
         createItem();
     }
-    window.addEventListener('keydown', (e) => {
-        if (e.code === 'ArrowLeft') {
-            previous();
-        }
-    });
 
     function createDOM() {
         const lightbox = document.createElement('div');
@@ -78,6 +81,9 @@ export default function useLightbox() {
         Array.from(document.getElementsByClassName('lightbox'))
             .forEach(item => {
                 item.addEventListener('click', () => open(item.src));
+                item.addEventListener('keydown', (e) => {
+                    if(e.code === 'Enter') open(item.src)
+                });
 
                 items.push({
                     src: item.src,
@@ -85,23 +91,6 @@ export default function useLightbox() {
                 });
             });
     }
-
-    function close() {
-        document.getElementsByTagName('body')[0].style.overflow = 'auto';
-        document.getElementById('lightbox').classList.remove('lightbox--open');
-    }
-
-    window.addEventListener("click", function(event) {
-        if (event.target === document.getElementById('lightbox')) {
-            close();
-        }
-    });
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            close();
-        }
-    });
 
     function init() {
         createDOM();

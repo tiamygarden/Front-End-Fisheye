@@ -43,6 +43,7 @@
     color: #901C1C;
     padding: 0 30px;
     margin: 0 30px;
+    cursor: pointer;
 }
 
 .lightbox__container {
