@@ -19,22 +19,38 @@ export function mediasFactory(medias, photographer) {
 
         const mediasOrderByPlaceholder = document.querySelector('.mediasOrderByPlaceholder');
         let optionsHtml = '';
-//todo : mettre le tabindex sur les li afin de pouvoir naviguer au clavier sur les differentes options et les rendre activable avec un ecouteurd evenement press key enter
+
         options.forEach(option => {
             if (option.value !== orderBy)
-                optionsHtml += `<li class="sort" onclick="window.mediasFactory.sortBy('${option.value}')" aria-label="${options}" tabindex="0">
+                optionsHtml += `<li class="sort" onclick="window.mediasFactory.sortBy('${option.value}')" aria-label="options de tri par popularité date ou titre">
                                     ${options.find(o => o.value === option.value)?.label}
                                 </li>`;
-        });
+            // });
 
-        mediasOrderByPlaceholder.innerHTML = `<div class="mediasOrderBy" tabindex="0">
-            <div class="mediasOrderBy__Current" tabindex="0">
+            mediasOrderByPlaceholder.innerHTML = `<div class="mediasOrderBy">
+            <div class="mediasOrderBy__Current" onclick="mediasFactory.sortBy('${'popularity'}')">
                 ${options.find(o => o.value === orderBy)?.label}
             </div>
             <ul class="mediasOrderBy__Options" tabindex="0">
                 ${optionsHtml}
             </ul>
         </div>`;
+
+            options.forEach((option) => {
+                const li = document.createElement('li');
+                li.textContent = option.label;
+                li.classList.add('sort', 'mediasOrderBy', 'sort--hidden');
+                li.setAttribute('data-value', option.value);
+                li.setAttribute('tabindex', '0');
+                li.setAttribute('aria-label', option.value);
+                li.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        sortBy(option.value);
+                    }
+                });
+                mediasOrderByPlaceholder.appendChild(li);
+            });
+        });
     }
 
     function displayList(sortType = null) {

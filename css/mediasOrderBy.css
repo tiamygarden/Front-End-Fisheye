@@ -1,10 +1,17 @@
 .labelizeDiv{
+    display: flex;
     font-size: 24px;
+    margin-bottom: -150px;
+}
+
+.labelizeDiv p {
+    padding-right: 5px;
 }
 
 .mediasOrderByPlaceholder {
-    display: inline-block;
-    border-radius: .5rem;
+    display: block;
+    border-radius: 0.5rem;
+    width: min-content;
 }
 
 .mediasOrderBy {
@@ -64,4 +71,30 @@ ul.mediasOrderBy__Options {
 
 .mediasOrderBy:hover .mediasOrderBy__Current:after {
     transform: rotate(0deg);
+}
+
+.sort--hidden{
+    display: flex;
+    font-size: 0;
+    width: 202px;
+    height: 63px;
+    background-color: inherit;
+    padding: 0;
+    /* position: relative; */
+    /* right: 202px; */
+    top: -63px;
+    z-index: -100;
+}
+
+.sort--hidden:focus-visible, .sort--hidden:focus-within, .sort--hidden:hover{
+    background: #901C1C;
+    padding: 1rem;
+    font-size: 24px;
+    color: white;
+    display: flex;
+    border-radius: .5rem;
+    position: relative;
+    width: 170px;
+    height: fit-content;
+    z-index: 100;
 }
