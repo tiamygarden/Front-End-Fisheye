@@ -19,13 +19,11 @@ export function useLikes() {
             : add(element);
     }
 
-    document.querySelectorAll('.photograph_media_likes').forEach((element) => {
-        element.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                toggle(element);
-            }
-        });
-    });
+    function toggleOnEnter(element, event) {
+        if (event.key === 'Enter') {
+            toggle(element);
+        }
+    }
 
-    return { toggle };
+    return { toggle, toggleOnEnter };
 }

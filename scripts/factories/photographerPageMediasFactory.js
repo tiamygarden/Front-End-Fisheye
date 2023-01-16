@@ -17,7 +17,12 @@ export function photographerPageMediasFactory(dataMedia) {
                 <div class="photograph_media_title" aria-label="${title}" tabindex="0">
                     <h3>${title}</h3>
                 </div>
-                <div class="photograph_media_likes" onclick="window.useLike.toggle(this)" aria-label="like" tabindex="0">
+                <div class="photograph_media_likes" 
+                        onclick="window.useLike.toggle(this)" 
+                        onkeydown="window.useLike.toggleOnEnter(this, event)" 
+                        aria-label="like" 
+                        tabindex="0"
+                >
                     <div class="likesCount">${likes}</div>
                     <i class="fa-solid fa-heart heartIcon" aria-label="like"></i>
                 </div>
@@ -32,7 +37,12 @@ export function photographerPageMediasFactory(dataMedia) {
                     <div class="photograph_media_title" aria-label="${title}" tabindex="0">
                         <h3>${title}</h3>
                     </div>
-                    <div class="photograph_media_likes" onclick="window.useLike.toggle(this)" aria-label="like" tabindex="0">
+                    <div class="photograph_media_likes" 
+                        onclick="window.useLike.toggle(this)"
+                        onkeydown="window.useLike.toggleOnEnter(this, event)"
+                        aria-label="like" 
+                        tabindex="0"
+                    >
                         <div class="likesCount">${likes}</div>
                         <i class="fa-solid fa-heart heartIcon" aria-label="like" role="button"></i>
                     </div>

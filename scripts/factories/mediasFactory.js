@@ -2,7 +2,7 @@ import { photographerPageMediasFactory } from './photographerPageMediasFactory.j
 import useLightbox from '../lib/useLightbox.js';
 
 export function mediasFactory(medias, photographer) {
-    let orderBy = 'popularity'
+    let orderBy = 'popularity';
 
     function sortBy(order) {
         orderBy = order;
@@ -64,6 +64,7 @@ export function mediasFactory(medias, photographer) {
         });
 
         window.lightbox = useLightbox();
+        //todo selectionner les likes et ajouter le listener qui gere les likes
     }
 
     function sortMedias(sortType) {
